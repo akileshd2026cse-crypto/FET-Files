@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AgroWaste Connect</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f3faf4;
+    color: #173d2a;
+}
+
+/* NAVBAR */
+.navbar {
+    background: #087443;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #b8f5c8;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #b8f5c8;
+}
+
+/* HERO */
+.hero {
+    min-height: 430px;
+    padding: 70px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #e8f8eb, #c9efd3);
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.badge {
+    display: inline-block;
+    background: #087443;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #087443;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.6;
+    color: #496452;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+}
+
+.btn {
+    border: none;
+    padding: 13px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.primary {
+    background: #087443;
+    color: white;
+}
+
+.secondary {
+    background: white;
+    color: #087443;
+    border: 2px solid #087443;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* HERO IMAGE */
+.hero-icon {
+    font-size: 170px;
+}
+
+/* SECTION */
+section {
+    padding: 60px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    color: #087443;
+}
+
+.section-title p {
+    margin-top: 10px;
+    color: #66776c;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #087443;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #65756b;
+    line-height: 1.5;
+}
+
+/* FORM */
+.form-section {
+    background: #e6f6e9;
+}
+
+.form-container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccdacf;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: 2px solid #73c992;
+}
+
+/* LISTINGS */
+.listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.listing {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,.07);
+}
+
+.listing h3 {
+    color: #087443;
+}
+
+.listing span {
+    display: block;
+    margin-top: 8px;
+    color: #66756c;
+}
+
+.price {
+    font-size: 22px;
+    color: #e08a00;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+/* DASHBOARD */
+.dashboard {
+    background: #f7fbf7;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.stat {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,.06);
+}
+
+.stat-icon {
+    font-size: 35px;
+}
+
+.stat h3 {
+    font-size: 28px;
+    margin-top: 10px;
+    color: #087443;
+}
+
+/* PRICE PREDICTOR */
+.predictor {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.result {
+    margin-top: 20px;
+    padding: 20px;
+    background: #e5f8e9;
+    border-radius: 10px;
+    display: none;
+}
+
+.result strong {
+    color: #087443;
+    font-size: 25px;
+}
+
+/* HOW IT WORKS */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.step {
+    padding: 25px;
+}
+
+.step-number {
+    width: 55px;
+    height: 55px;
+    margin: auto auto 15px;
+    border-radius: 50%;
+    background: #087443;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    background: #075c37;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer p {
+    margin: 7px;
+    color: #c9e8d3;
+}
+
+/* MOBILE */
+@media(max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .navbar a {
+        margin: 0 7px;
+        font-size: 13px;
+    }
+
+    .hero {
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero-icon {
+        font-size: 100px;
+        margin-top: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="logo">
+        🌱 AgroWaste <span>Connect</span>
+    </div>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#list">Marketplace</a>
+        <a href="#predict">Price</a>
+        <a href="#dashboard">Dashboard</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <span class="badge">🌾 Smart Agriculture Platform</span>
+
+        <h1>
+            Turn Crop Waste Into
+            <span>Opportunity</span>
+        </h1>
+
+        <p>
+            Connect farmers with businesses that need agricultural
+            waste. Sell crop residues, find nearby buyers and reduce
+            transportation costs.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="btn primary"
+                    onclick="scrollToSection('sell')">
+                Sell Crop Waste
+            </button>
+
+            <button class="btn secondary"
+                    onclick="scrollToSection('list')">
+                Find Waste
+            </button>
+        </div>
+
+    </div>
+
+    <div class="hero-icon">
+        🌾
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section>
+
+    <div class="section-title">
+        <h2>Our Smart Features</h2>
+        <p>Everything needed to turn agricultural waste into value.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon">📱</div>
+            <h3>Waste Listing</h3>
+            <p>
+                Farmers can list their crop waste with quantity,
+                location, price and availability.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>Smart Buyer Matching</h3>
+            <p>
+                Automatically find suitable buyers based on
+                waste type, distance and quantity.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🚚</div>
+            <h3>Shared Transportation</h3>
+            <p>
+                Combine waste from multiple farmers into one
+                shipment and reduce transportation costs.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📈</div>
+            <h3>Price Prediction</h3>
+            <p>
+                Estimate a reasonable selling price using
+                previous market transactions.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">♻️</div>
+            <h3>Waste-to-Value</h3>
+            <p>
+                Discover whether your waste is better suited
+                for compost, animal bedding, biomass or other uses.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <h3>Farmer Dashboard</h3>
+            <p>
+                Track your waste, estimated value, buyers,
+                sales and potential income.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SELL WASTE FORM -->
+<section class="form-section" id="sell">
+
+    <div class="section-title">
+        <h2>🌾 List Your Crop Waste</h2>
+        <p>Enter your waste details and find potential buyers.</p>
+    </div>
+
+    <div class="form-container">
+
+        <div class="form-group">
+            <label>Waste Type</label>
+
+            <select id="wasteType">
+                <option value="Rice Straw">Rice Straw</option>
+                <option value="Rice Husk">Rice Husk</option>
+                <option value="Coconut Waste">Coconut Waste</option>
+                <option value="Sugarcane Residue">
+                    Sugarcane Residue
+                </option>
+                <option value="Corn Stalks">Corn Stalks</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Quantity (kg)</label>
+
+            <input
+                type="number"
+                id="quantity"
+                placeholder="Example: 500">
+        </div>
+
+        <div class="form-group">
+            <label>Location</label>
+
+            <input
+                type="text"
+                id="location"
+                placeholder="Example: Coimbatore">
+        </div>
+
+        <div class="form-group">
+            <label>Expected Price (₹)</label>
+
+            <input
+                type="number"
+                id="expectedPrice"
+                placeholder="Example: 2500">
+        </div>
+
+        <button
+            class="btn primary"
+            onclick="addListing()">
+            Upload Waste Listing
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- MARKETPLACE -->
+<section id="list">
+
+    <div class="section-title">
+
+        <h2>🛒 Crop Waste Marketplace</h2>
+
+        <p>
+            Find agricultural waste available from nearby farmers.
+        </p>
+
+    </div>
+
+    <div class="listings" id="listingContainer">
+
+        <div class="listing">
+
+            <h3>🌾 Rice Straw</h3>
+
+            <span>📦 Quantity: 500 kg</span>
+            <span>📍 Location: Coimbatore</span>
+            <span>🚚 Pickup Available</span>
+
+            <div class="price">
+                ₹2,500
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="contactFarmer('Rice Straw')">
+                Contact Farmer
+            </button>
+
+        </div>
+
+
+        <div class="listing">
+
+            <h3>🌾 Rice Husk</h3>
+
+            <span>📦 Quantity: 800 kg</span>
+            <span>📍 Location: Pollachi</span>
+            <span>🚚 Pickup Available</span>
+
+            <div class="price">
+                ₹4,000
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="contactFarmer('Rice Husk')">
+                Contact Farmer
+            </button>
+
+        </div>
+
+
+        <div class="listing">
+
+            <h3>🥥 Coconut Waste</h3>
+
+            <span>📦 Quantity: 300 kg</span>
+            <span>📍 Location: Tiruppur</span>
+            <span>🚚 Pickup Available</span>
+
+            <div class="price">
+                ₹1,800
+            </div>
+
+            <button
+                class="btn primary"
+                onclick="contactFarmer('Coconut Waste')">
+                Contact Farmer
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WASTE TO VALUE -->
+<section>
+
+    <div class="section-title">
+
+        <h2>♻️ Waste-to-Value Recommendation</h2>
+
+        <p>
+            Find the best use for your agricultural waste.
+        </p>
+
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-icon">🌾</div>
+
+            <h3>Rice Husk</h3>
+
+            <p>Can potentially be used for:</p>
+
+            <br>
+
+            <p>
+                🐄 Animal bedding<br>
+                🌱 Compost<br>
+                🔥 Biomass fuel<br>
+                🧱 Building materials
+            </p>
+
+            <br>
+
+            <button
+                class="btn primary"
+                onclick="recommend('Rice Husk')">
+                Find Best Use
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">🌾</div>
+
+            <h3>Rice Straw</h3>
+
+            <p>Possible applications:</p>
+
+            <br>
+
+            <p>
+                🐄 Animal feed<br>
+                🌱 Compost<br>
+                📦 Packaging<br>
+                🔥 Biomass
+            </p>
+
+            <br>
+
+            <button
+                class="btn primary"
+                onclick="recommend('Rice Straw')">
+                Find Best Use
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">🥥</div>
+
+            <h3>Coconut Waste</h3>
+
+            <p>Possible applications:</p>
+
+            <br>
+
+            <p>
+                🧵 Coir products<br>
+                🌱 Compost<br>
+                🪴 Growing medium<br>
+                🔥 Biomass
+            </p>
+
+            <br>
+
+            <button
+                class="btn primary"
+                onclick="recommend('Coconut Waste')">
+                Find Best Use
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRICE PREDICTOR -->
+<section class="form-section" id="predict">
+
+    <div class="section-title">
+
+        <h2>📈 Smart Price Predictor</h2>
+
+        <p>
+            Get an estimated market value for your crop waste.
+        </p>
+
+    </div>
+
+
+    <div class="predictor">
+
+        <div class="form-group">
+
+            <label>Waste Type</label>
+
+            <select id="priceWaste">
+
+                <option value="4">
+                    Rice Straw
+                </option>
+
+                <option value="5">
+                    Rice Husk
+                </option>
+
+                <option value="6">
+                    Coconut Waste
+                </option>
+
+                <option value="4.5">
+                    Sugarcane Residue
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Quantity (kg)</label>
+
+            <input
+                type="number"
+                id="priceQuantity"
+                placeholder="Enter quantity">
+
+        </div>
+
+
+        <button
+            class="btn primary"
+            onclick="predictPrice()">
+
+            Predict Price
+
+        </button>
+
+
+        <div class="result" id="priceResult">
+
+            Estimated Price:
+
+            <br>
+
+            <strong id="estimatedPrice">
+                ₹0
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SHARED TRANSPORT -->
+<section>
+
+    <div class="section-title">
+
+        <h2>🚚 Shared Transportation</h2>
+
+        <p>
+            Combine multiple farmers' waste into one shipment.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>👨‍🌾 Farmer A</h3>
+
+            <p>Rice Straw</p>
+
+            <h2>300 kg</h2>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>👨‍🌾 Farmer B</h3>
+
+            <p>Rice Straw</p>
+
+            <h2>400 kg</h2>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>👨‍🌾 Farmer C</h3>
+
+            <p>Rice Straw</p>
+
+            <h2>300 kg</h2>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🚛 Combined Truck</h3>
+
+            <p>Total Waste</p>
+
+            <h2 style="color:#087443;">
+                1,000 kg
+            </h2>
+
+            <p>
+                Lower transportation cost
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+<section class="dashboard" id="dashboard">
+
+    <div class="section-title">
+
+        <h2>📊 Farmer Dashboard</h2>
+
+        <p>Track your agricultural waste and earnings.</p>
+
+    </div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <div class="stat-icon">🌾</div>
+
+            <h3 id="dashboardWaste">
+                1,200 kg
+            </h3>
+
+            <p>Waste Available</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">💰</div>
+
+            <h3>
+                ₹6,000
+            </h3>
+
+            <p>Estimated Value</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">👥</div>
+
+            <h3>
+                12
+            </h3>
+
+            <p>Nearby Buyers</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-icon">📈</div>
+
+            <h3>
+                ₹7,200
+            </h3>
+
+            <p>Potential Income</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section>
+
+    <div class="section-title">
+
+        <h2>🚀 How AgroWaste Connect Works</h2>
+
+    </div>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">1</div>
+
+            <h3>Upload</h3>
+
+            <p>Farmer uploads crop waste details.</p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">2</div>
+
+            <h3>AI Matching</h3>
+
+            <p>System finds suitable buyers.</p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">3</div>
+
+            <h3>Best Use</h3>
+
+            <p>System recommends profitable uses.</p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">4</div>
+
+            <h3>Pickup</h3>
+
+            <p>Transportation is arranged.</p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">5</div>
+
+            <h3>Payment</h3>
+
+            <p>Buyer and farmer complete the transaction.</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <h2>🌱 AgroWaste Connect</h2>
+
+    <p>
+        Turning agricultural waste into opportunity.
+    </p>
+
+    <p>
+        © 2026 AgroWaste Connect
+    </p>
+
+</footer>
+
+
+<script>
+
+/* SCROLL */
+function scrollToSection(id) {
+
+    document.getElementById(id)
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* ADD LISTING */
+function addListing() {
+
+    let waste =
+        document.getElementById("wasteType").value;
+
+    let quantity =
+        document.getElementById("quantity").value;
+
+    let location =
+        document.getElementById("location").value;
+
+    let price =
+        document.getElementById("expectedPrice").value;
+
+
+    if (!quantity || !location || !price) {
+
+        alert("Please fill all the details.");
+
+        return;
+    }
+
+
+    let listing =
+        document.createElement("div");
+
+    listing.className = "listing";
+
+
+    listing.innerHTML = `
+
+        <h3>🌾 ${waste}</h3>
+
+        <span>📦 Quantity: ${quantity} kg</span>
+
+        <span>📍 Location: ${location}</span>
+
+        <span>🚚 Pickup Available</span>
+
+        <div class="price">
+            ₹${Number(price).toLocaleString()}
+        </div>
+
+        <button
+            class="btn primary"
+            onclick="contactFarmer('${waste}')">
+
+            Contact Farmer
+
+        </button>
+
+    `;
+
+
+    document
+        .getElementById("listingContainer")
+        .prepend(listing);
+
+
+    alert(
+        "Your crop waste has been successfully listed!"
+    );
+
+
+    document
+        .getElementById("quantity")
+        .value = "";
+
+    document
+        .getElementById("location")
+        .value = "";
+
+    document
+        .getElementById("expectedPrice")
+        .value = "";
+
+}
+
+
+/* PRICE PREDICTOR */
+function predictPrice() {
+
+    let pricePerKg =
+        Number(
+            document.getElementById("priceWaste").value
+        );
+
+    let quantity =
+        Number(
+            document.getElementById("priceQuantity").value
+        );
+
+
+    if (!quantity || quantity <= 0) {
+
+        alert("Enter a valid quantity.");
+
+        return;
+    }
+
+
+    let minimum =
+        pricePerKg * 0.9 * quantity;
+
+    let maximum =
+        pricePerKg * 1.1 * quantity;
+
+
+    document.getElementById("estimatedPrice")
+        .innerText =
+        "₹" +
+        Math.round(minimum).toLocaleString() +
+        " - ₹" +
+        Math.round(maximum).toLocaleString();
+
+
+    document.getElementById("priceResult")
+        .style.display = "block";
+
+}
+
+
+/* CONTACT BUYER */
+function contactFarmer(waste) {
+
+    alert(
+        "Buyer request sent for " +
+        waste +
+        ". The farmer will be notified."
+    );
+
+}
+
+
+/* WASTE RECOMMENDATION */
+function recommend(waste) {
+
+    let message = "";
+
+    if (waste === "Rice Husk") {
+
+        message =
+            "Recommended uses: Biomass fuel, compost and building materials.";
+
+    }
+
+    else if (waste === "Rice Straw") {
+
+        message =
+            "Recommended uses: Animal bedding, compost, packaging and biomass.";
+
+    }
+
+    else {
+
+        message =
+            "Recommended uses: Coir products, compost, growing medium and biomass.";
+
+    }
+
+
+    alert(message);
+
+}
+
+</script>
+
+</body>
+</html>
